@@ -14,7 +14,18 @@ const app = express();
 
 // Middleware
 app.use(express.json());
-app.use(cors());
+const allowedOrigins = ['http://localhost:3000', 'https://takes-app-frontend.vercel.app/']; // REPLACE THIS WITH YOUR ACTUAL VERCEL FRONTEND URL
+
+app.use(cors({
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true,
+}));
 app.use(helmet());
 
 // Rate limiting
