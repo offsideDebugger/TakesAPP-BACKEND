@@ -4,11 +4,9 @@
   "description": "Backend for Takes/Opinions App",
   "main": "dist/server.js",
   "scripts": {
-    "start": "react-scripts start",
-    "dev": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "node dist/server.js",
+    "dev": "nodemon --exec ts-node src/server.ts",
+    "build": "tsc"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
